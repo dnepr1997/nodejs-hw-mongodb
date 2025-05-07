@@ -25,7 +25,7 @@ const contactsSchema = new Schema(
       type: String,
       enum: typeList,
       required: true,
-      default: 'Personal',
+      default: 'personal',
     },
   },
   {
@@ -41,7 +41,7 @@ export const contactsSortFields = [
   'name',
   'phoneNumber',
   'email',
-  'isfavorite',
+  'isFavorite',
   'contactType',
 ];
 export const contactsCollection = model('contacts', contactsSchema);
