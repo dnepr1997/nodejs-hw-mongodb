@@ -13,6 +13,9 @@ export const getContacts = async ({
 
   const query = contactsCollection.find();
 
+  if (filter.userId) {
+    query.where('userId').equals(filter.userId);
+  }
   if (filter.contactType) {
     query.where('contactType').regex(new RegExp(filter.contactType, 'i'));
   }
