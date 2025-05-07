@@ -27,6 +27,11 @@ const contactsSchema = new Schema(
       required: true,
       default: 'Personal',
     },
+    userId: {
+      type: Schema.Types.ObjectId,
+      ref: 'user',
+      required: true,
+    },
   },
   {
     timestamps: true,
@@ -41,7 +46,7 @@ export const contactsSortFields = [
   'name',
   'phoneNumber',
   'email',
-  'isfavorite',
+  'isFavorite',
   'contactType',
 ];
 export const contactsCollection = model('contacts', contactsSchema);
