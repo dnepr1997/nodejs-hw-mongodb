@@ -34,6 +34,9 @@ export const getContactsByIdController = async (req, res) => {
   if (!data) {
     throw createHttpError(404, `Contact with ${contactId}not found`);
   }
+  if (data.userId.toString() !== req.user._id.toString()) {
+    throw createHttpError(403, 'Access denied to this contact');
+  }
   res.json({
     status: 200,
     message: `Successfully found contact with id ${contactId}!`,
@@ -57,6 +60,9 @@ export const updateContactsController = async (req, res) => {
   if (!data) {
     throw createHttpError(404, 'Contact not found');
   }
+  if (data.userId.toString() !== req.user._id.toString()) {
+    throw createHttpError(403, 'Access denied to update this contact');
+  }
 
   res.json({
     status: 200,
@@ -70,6 +76,9 @@ export const deleteContactsController = async (req, res) => {
   const data = await deleteContactsById(contactId);
   if (!data) {
     throw createHttpError(404, 'Contact not found');
+  }
+  if (data.userId.toString() !== req.user._id.toString()) {
+    throw createHttpError(403, 'Access denied to delete this contact');
   }
   res.status(204).send();
 };

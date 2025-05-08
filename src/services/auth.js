@@ -4,6 +4,7 @@ import bcrypt from 'bcrypt';
 import { sessionCollection } from '../db/models/session.js';
 import { randomBytes } from 'node:crypto';
 import { accessTokenLifeTime, refreshTokenLifeTime } from '../constans/auth.js';
+
 const createSession = () => {
   const accessToken = randomBytes(30).toString('base64');
   const refreshToken = randomBytes(30).toString('base64');
@@ -26,7 +27,7 @@ export const registerUser = async (payload) => {
 
   const user = await findUser({ email });
   if (user) {
-    throw createHttpError(209, 'Email already in use');
+    throw createHttpError(409, 'Email already in use');
   }
   const hashPassword = await bcrypt.hash(password, 10);
   return await userCollection.create({ ...payload, password: hashPassword });
