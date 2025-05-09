@@ -23,13 +23,13 @@ export const findSession = (query) => sessionCollection.findOne(query);
 export const findUser = (query) => userCollection.findOne(query);
 
 export const registerUser = async (payload) => {
-  const { email, password } = payload;
-
-  const user = await findUser({ email });
+  // const { email, password } = payload;
+  const user = await userCollection.findOne({ email: payload.email });
+  // const user = await findUser({ email });
   if (user) {
     throw createHttpError(409, 'Email already in use');
   }
-  const hashPassword = await bcrypt.hash(password, 10);
+  const hashPassword = await bcrypt.hash(payload.password, 10);
   return await userCollection.create({ ...payload, password: hashPassword });
 };
 

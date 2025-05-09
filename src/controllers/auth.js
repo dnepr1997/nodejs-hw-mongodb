@@ -25,6 +25,18 @@ export const registerController = async (req, res) => {
   });
 };
 
+// export const registerController = async (req, res) => {
+//   const user = await registerUser(req.body);
+
+//   const { password, ...userWithoutPassword } = user.toObject();
+
+//   res.status(201).json({
+//     status: 201,
+//     message: 'Successfully registered a user!',
+//     data: userWithoutPassword,
+//   });
+// };
+
 export const loginController = async (req, res) => {
   const session = await loginUser(req.body);
 
