@@ -41,7 +41,7 @@ export const getContacts = async ({
     ...paginationData,
   };
 };
-
+// доопрацювання
 // export const getContactsById = (id) => contactsCollection.findOne({ _id: id });
 export const getContactsById = async (contactId, userId) => {
   const data = await contactsCollection.findOne({ _id: contactId, userId });
