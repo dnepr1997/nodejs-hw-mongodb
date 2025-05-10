@@ -1,8 +1,9 @@
 import multer from 'multer';
+import { TEMPORARY_FILE_DIR } from '../constans/index.js';
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, '/tmp/my-uploads');
+    cb(null, TEMPORARY_FILE_DIR);
   },
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now();
