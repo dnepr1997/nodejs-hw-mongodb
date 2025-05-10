@@ -7,6 +7,7 @@ import {
   loginController,
   refreshController,
   logoutController,
+  verifyController,
 } from '../controllers/auth.js';
 
 export const authRouter = Router();
@@ -16,6 +17,8 @@ authRouter.post(
   validateBody(authRegisterSchema),
   ctrlWrapper(registerController),
 );
+
+authRouter.get('/verify', ctrlWrapper(verifyController));
 
 authRouter.post(
   '/login',
