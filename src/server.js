@@ -8,6 +8,7 @@ import dotenv from 'dotenv';
 import { getEnvVar } from './utils/getEnvVar.js';
 import { router } from './routers/contacts.js';
 import { authRouter } from './routers/auth.js';
+import { swaggerDocs } from './middlewares/swaggerDocs.js';
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ const setupServer = () => {
 
   app.use('/auth', authRouter);
   app.use('/contacts', router);
+  app.use('/api-docs', swaggerDocs());
 
   app.use(notFoundHandler);
 
