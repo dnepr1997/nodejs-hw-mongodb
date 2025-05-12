@@ -8,17 +8,6 @@ import {
 } from '../services/auth.js';
 import { refreshTokenLifeTime } from '../constans/auth.js';
 
-const setupSession = (res, session) => {
-  res.cookie('refreshToken', session.refreshToken, {
-    httpOnly: true,
-    expires: new Date(Date.now() + refreshTokenLifeTime),
-  });
-  res.cookie('sessionId', session._id, {
-    httpOnly: true,
-    expires: new Date(Date.now() + refreshTokenLifeTime),
-  });
-};
-
 export const registerController = async (req, res) => {
   const user = await registerUser(req.body);
   res.status(201).json({
@@ -67,6 +56,17 @@ export const loginController = async (req, res) => {
     status: 200,
     message: 'Successfully logged in an user!',
     data: { accessToken: session.accessToken },
+  });
+};
+
+const setupSession = (res, session) => {
+  res.cookie('refreshToken', session.refreshToken, {
+    httpOnly: true,
+    expires: new Date(Date.now() + refreshTokenLifeTime),
+  });
+  res.cookie('sessionId', session._id, {
+    httpOnly: true,
+    expires: new Date(Date.now() + refreshTokenLifeTime),
   });
 };
 
