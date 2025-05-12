@@ -16,7 +16,32 @@ import { isValidId } from '../middlewares/isValidId.js';
 import { authenticate } from '../middlewares/authenticate.js';
 import { upload } from '../middlewares/multer.js';
 
-export const router = Router();
+// const router = Router();
+
+// router.use(authenticate);
+
+// router.get('/', ctrlWrapper(getContactsController));
+
+// router.get('/:contactId', isValidId, ctrlWrapper(getContactsByIdController));
+
+// router.post(
+//   '/',
+//   upload.single('photo'),
+//   validateBody(createContactSchema),
+//   ctrlWrapper(addContactsController),
+// );
+
+// router.patch(
+//   '/:contactId',
+//   upload.single('photo'),
+//   isValidId,
+//   validateBody(updateContactSchema),
+//   ctrlWrapper(updateContactsController),
+// );
+
+// router.delete('/:contactId', isValidId, ctrlWrapper(deleteContactsController));
+// export default router;
+const router = Router();
 
 router.use(authenticate);
 
@@ -40,3 +65,5 @@ router.patch(
 );
 
 router.delete('/:contactId', isValidId, ctrlWrapper(deleteContactsController));
+
+export default router;
