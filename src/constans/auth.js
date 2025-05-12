@@ -1,4 +1,4 @@
-export const emailRegexp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
 import path from 'node:path';
 
 export const accessTokenLifeTime = 15 * 60 * 1000;

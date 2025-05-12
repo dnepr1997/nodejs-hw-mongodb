@@ -43,11 +43,6 @@ const usersSchema = new Schema(
       required: true,
     },
     userId: { type: String },
-    verify: {
-      type: Boolean,
-      default: false,
-      required: true,
-    },
   },
   {
     timestamps: true,

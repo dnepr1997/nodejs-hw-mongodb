@@ -7,7 +7,7 @@ import {
   deleteContactsController,
 } from '../controllers/contacts.js';
 import { ctrlWrapper } from '../utils/ctrlWrapper.js';
-import { validateBody } from '../utils/validateBody.js';
+import { validateBody } from '../middlewares/validateBody.js';
 import {
   createContactSchema,
   updateContactSchema,
@@ -33,8 +33,8 @@ router.post(
 
 router.patch(
   '/:contactId',
-  isValidId,
   upload.single('photo'),
+  isValidId,
   validateBody(updateContactSchema),
   ctrlWrapper(updateContactsController),
 );

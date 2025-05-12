@@ -1,6 +1,6 @@
 import { model, Schema } from 'mongoose';
 import { typeList } from '../../constans/contacts.js';
-import { handleSaveErrors, saveUpdateSettings } from './hooks.js';
+// import { handleSaveErrors, saveUpdateSettings } from './hooks.js';
 
 const contactsSchema = new Schema(
   {
@@ -30,7 +30,6 @@ const contactsSchema = new Schema(
     userId: {
       type: Schema.Types.ObjectId,
       ref: 'user',
-      required: true,
     },
     photo: { type: String },
   },
@@ -40,14 +39,14 @@ const contactsSchema = new Schema(
   },
 );
 
-contactsSchema.post('save', handleSaveErrors); // спрацьовує після невдалого
-contactsSchema.pre('findOneAndUpdate', saveUpdateSettings);
-contactsSchema.post('findOneAndUpdate', handleSaveErrors);
-export const contactsSortFields = [
-  'name',
-  'phoneNumber',
-  'email',
-  'isFavorite',
-  'contactType',
-];
+// contactsSchema.post('save', handleSaveErrors); // спрацьовує після невдалого
+// contactsSchema.pre('findOneAndUpdate', saveUpdateSettings);
+// contactsSchema.post('findOneAndUpdate', handleSaveErrors);
+// export const contactsSortFields = [
+//   'name',
+//   'phoneNumber',
+//   'email',
+//   'isFavorite',
+//   'contactType',
+// ];
 export const contactsCollection = model('contacts', contactsSchema);

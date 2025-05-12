@@ -1,15 +1,13 @@
 import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-// import { logger } from './middlewares/logger.js';
+import { logger } from './middlewares/logger.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { errorHandler } from './middlewares/errorHandler.js';
-import dotenv from 'dotenv';
 import { getEnvVar } from './utils/getEnvVar.js';
 import { router } from './routers/contacts.js';
 import { authRouter } from './routers/auth.js';
-
-dotenv.config();
+import { UPLOAD_DIR } from './constans/contacts.js';
 
 const setupServer = () => {
   const app = express();
@@ -18,10 +16,11 @@ const setupServer = () => {
   app.use(cookieParser());
   app.use(express.json());
 
-  // app.use(logger);
+  app.use(logger);
 
   app.use('/auth', authRouter);
   app.use('/contacts', router);
+  app.use('/uploads', express.static(UPLOAD_DIR));
 
   app.use(notFoundHandler);
 
