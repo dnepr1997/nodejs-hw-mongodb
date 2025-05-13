@@ -14,7 +14,11 @@ parameters:
       example: '9876fecf235d8ed3679b3fc5'
 responses:
   '204':
-    description: ''
+    description: Contact deleted successfully
+  '400':
+    $ref: ../../../components/responses/400.yaml
+  '401':
+    $ref: ../../../components/responses/401.yaml
   '404':
     description: Contact not found
     content:
@@ -28,3 +32,5 @@ responses:
             message:
               type: string
               example: Contact not found
+  '500':
+    $ref: ../../../components/responses/500.yaml

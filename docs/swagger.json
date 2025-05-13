@@ -151,6 +151,9 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
           }
         }
       },
@@ -173,7 +176,8 @@
                 "type": "object",
                 "required": [
                   "name",
-                  "phoneNumber"
+                  "phoneNumber",
+                  "contactType"
                 ],
                 "properties": {
                   "name": {
@@ -247,8 +251,14 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
           "401": {
             "$ref": "#/components/responses/401"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
           }
         }
       }
@@ -307,8 +317,17 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
           "401": {
             "$ref": "#/components/responses/401"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
           }
         }
       },
@@ -356,7 +375,7 @@
                     "type": "string",
                     "example": "alex@mail.com"
                   },
-                  "isFavourite": {
+                  "isFavorite": {
                     "description": "Is the contact a favorite?",
                     "type": "boolean",
                     "example": true
@@ -412,8 +431,17 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
           "404": {
             "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
           }
         }
       },
@@ -442,7 +470,13 @@
         ],
         "responses": {
           "204": {
-            "description": ""
+            "description": "Contact deleted successfully"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
           },
           "404": {
             "description": "Contact not found",
@@ -463,6 +497,9 @@
                 }
               }
             }
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
           }
         }
       }
@@ -857,9 +894,8 @@
           "_id",
           "name",
           "phoneNumber",
-          "email",
-          "isFavorite",
-          "contactType"
+          "contactType",
+          "userId"
         ],
         "properties": {
           "_id": {
@@ -925,6 +961,7 @@
         "required": [
           "name",
           "email",
+          "_id",
           "password"
         ],
         "properties": {

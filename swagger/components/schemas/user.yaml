@@ -2,6 +2,7 @@ type: object
 required:
   - name
   - email
+  - _id
   - password
 properties:
   name:
