@@ -1,12 +1,11 @@
 import { model, Schema } from 'mongoose';
-import { handleSaveErrors, saveUpdateSettings } from './hooks.js';
+// import { handleSaveErrors, saveUpdateSettings } from './hooks.js';
 
 const sessionSchema = new Schema(
   {
     userId: {
       type: Schema.Types.ObjectId,
       ref: 'users',
-      required: true,
     },
     accessToken: {
       type: String,
@@ -28,7 +27,7 @@ const sessionSchema = new Schema(
   { timestamps: true, versionKey: false },
 );
 
-sessionSchema.post('save', handleSaveErrors); // спрацьовує після невдалого
-sessionSchema.pre('findOneAndUpdate', saveUpdateSettings);
-sessionSchema.post('findOneAndUpdate', handleSaveErrors);
+// sessionSchema.post('save', handleSaveErrors); // спрацьовує після невдалого
+// sessionSchema.pre('findOneAndUpdate', saveUpdateSettings);
+// sessionSchema.post('findOneAndUpdate', handleSaveErrors);
 export const sessionCollection = model('session', sessionSchema);
